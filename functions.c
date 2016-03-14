@@ -6,7 +6,7 @@
 /*   By: droly <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/11 17:22:51 by droly             #+#    #+#             */
-/*   Updated: 2016/03/11 17:48:09 by droly            ###   ########.fr       */
+/*   Updated: 2016/03/14 16:48:14 by droly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_lst	*push2(t_lst *lst_2, t_lst *tmp)
 	return (lst_2);
 }
 
-t_lst	*rotate_r(t_lst *lst_ab, t_lst *tmp)
+t_lst	*rotate_r(t_lst *lst_ab, t_lst *tmp, char *str)
 {
 	int tmp2;
 
@@ -35,6 +35,7 @@ t_lst	*rotate_r(t_lst *lst_ab, t_lst *tmp)
 	}
 	lst_ab->content = tmp2;
 	lst_ab = tmp;
+	ft_putstr(str);
 	return (lst_ab);
 }
 
@@ -61,17 +62,19 @@ t_lst	*rotate(t_lst *lst_ab, t_lst *tmp)
 	return (lst_ab);
 }
 
-t_lst	*push(t_lst *lst_1, t_lst *lst_2, t_lst *tmp)
+t_lst	*push(t_lst *lst_1, t_lst *lst_2, t_lst *tmp, char *str)
 {
 	while (lst_2->next != NULL)
 		lst_2 = lst_2->next;
 	if (lst_1 == NULL)
 	{
+		ft_putchar('e');
 		lst_1 = malloc(sizeof(t_lst));
 		lst_1->next = NULL;
 		tmp = lst_1;
 		lst_1->content = lst_2->content;
 		lst_1 = tmp;
+		ft_putnbr(lst_1->content);
 		return (lst_1);
 	}
 	tmp = lst_1;
@@ -80,11 +83,12 @@ t_lst	*push(t_lst *lst_1, t_lst *lst_2, t_lst *tmp)
 	lst_1->next = malloc(sizeof(t_lst));
 	lst_1->next->next = NULL;
 	lst_1->next->content = lst_2->content;
+	ft_putstr(str);
 	lst_1 = tmp;
 	return (lst_1);
 }
 
-t_lst	*swap_ab(t_lst *lst_ab, t_lst *tmp)
+t_lst	*swap_ab(t_lst *lst_ab, t_lst *tmp, char *str)
 {
 	int c;
 
@@ -96,5 +100,6 @@ t_lst	*swap_ab(t_lst *lst_ab, t_lst *tmp)
 	lst_ab->content = lst_ab->next->content;
 	lst_ab->next->content = c;
 	lst_ab = tmp;
+	ft_putstr(str);
 	return (lst_ab);
 }
