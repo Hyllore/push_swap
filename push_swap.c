@@ -6,7 +6,7 @@
 /*   By: droly <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 14:09:00 by droly             #+#    #+#             */
-/*   Updated: 2016/03/14 17:05:50 by droly            ###   ########.fr       */
+/*   Updated: 2016/03/15 11:38:11 by droly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ t_lst	*put_in_lst(t_lst *lst_a, char **argv, int argc)
 	lst_a->next = NULL;
 	lst_a = tmp;
 	checkdoublon(lst_a, tmp);
-	lst_a = algo(lst_a, lst_b, tmp);
-//	lst_a = tmp;
+	lst_a = algo(lst_a, lst_b);
+	lst_a = tmp;
 	return (lst_a);
 }
 

@@ -6,7 +6,7 @@
 /*   By: droly <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/11 17:22:51 by droly             #+#    #+#             */
-/*   Updated: 2016/03/14 16:48:14 by droly            ###   ########.fr       */
+/*   Updated: 2016/03/15 17:05:41 by droly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,12 @@ t_lst	*push(t_lst *lst_1, t_lst *lst_2, t_lst *tmp, char *str)
 		lst_2 = lst_2->next;
 	if (lst_1 == NULL)
 	{
-		ft_putchar('e');
 		lst_1 = malloc(sizeof(t_lst));
 		lst_1->next = NULL;
 		tmp = lst_1;
 		lst_1->content = lst_2->content;
 		lst_1 = tmp;
-		ft_putnbr(lst_1->content);
+		ft_putstr(str);
 		return (lst_1);
 	}
 	tmp = lst_1;

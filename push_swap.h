@@ -6,7 +6,7 @@
 /*   By: droly <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 11:57:08 by droly             #+#    #+#             */
-/*   Updated: 2016/03/14 16:14:26 by droly            ###   ########.fr       */
+/*   Updated: 2016/03/15 11:38:00 by droly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_lst	*swap_ab(t_lst *lst_ab, t_lst *tmp, char *str);
 void	error(void);
 void	checkdoublon(t_lst *lst_a, t_lst *tmp);
 t_lst	*put_in_lst(t_lst *lst_a, char **argv, int argc);
-t_lst	*algo(t_lst *lst_a, t_lst *lst_b, t_lst *tmp);
+t_lst	*algo(t_lst *lst_a, t_lst *lst_b);
 int		ft_check(t_lst *lst_a, t_lst *lst_b, t_lst *tmp);
 
 #endif
