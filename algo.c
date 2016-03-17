@@ -6,7 +6,7 @@
 /*   By: droly <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/14 14:48:18 by droly             #+#    #+#             */
-/*   Updated: 2016/03/15 17:05:39 by droly            ###   ########.fr       */
+/*   Updated: 2016/03/16 16:44:40 by droly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,24 +36,27 @@ t_lst	*algo(t_lst *lst_a, t_lst *lst_b)
 	tmp = lst_a;
 	while (ft_check(lst_a, lst_b, tmp) == 0)
 	{
-		ft_putchar('r');
-		while (lst_a != NULL)
-		{
-			ft_putnbr(lst_a->content);
-			lst_a = lst_a->next;
-		}
-		ft_putchar(':');
+//		ft_putchar('r');
+//		while (lst_a != NULL)
+//		{
+//			ft_putnbr(lst_a->content);
+//			ft_putchar('>');
+//			lst_a = lst_a->next;
+//		}
+//		ft_putchar(':');
 		lst_a = tmp;
 		if (lst_a->next != NULL)
 		{
 			while (lst_a->next->next != NULL)
 				lst_a = lst_a->next;
-			ft_putchar('v');
 			if (lst_a->content < lst_a->next->content)
 			{
 				lst_a = tmp;
 				lst_a = swap_ab(lst_a, tmp, "sa ");
 			}
+			lst_a = tmp;
+			if (ft_check(lst_a, lst_b, tmp) == 1)
+				return (lst_a);
 			lst_a = tmp;
 		}
 		c = 2147483647;
@@ -68,28 +71,36 @@ t_lst	*algo(t_lst *lst_a, t_lst *lst_b)
 			lst_a = lst_a->next;
 		while (lst_a->content != c)
 		{
-			ft_putnbr(lst_a->content);
-			ft_putnbr(c);
-			sleep(1);
+//			ft_putnbr(lst_a->content);
+//			ft_putstr("->");
+//			ft_putnbr(c);
+//			sleep(1);
 			lst_a = tmp;
 			lst_a = rotate_r(lst_a, tmp, "rra ");
+			while (lst_a->next != NULL)
+				lst_a = lst_a->next;
 		}
 		if (lst_a->content == c)
 		{
 			lst_a = tmp;
 			lst_b = push(lst_b, lst_a, tmp, "pb ");
+//			ft_putchar('v');
 			lst_a = push2(lst_a, tmp);
+//			ft_putchar('e');
 		}
 		if (lst_a == NULL)
 		{
-			ft_putchar('e');
 			while (lst_b != NULL)
 			{
-				lst_a = push(lst_a, lst_b, tmp, "pa ");
+				if (lst_b->next == NULL)
+					lst_a = push(lst_a, lst_b, tmp, "pa");
+				else
+					lst_a = push(lst_a, lst_b, tmp, "pa ");
+				lst_a = tmp;
 				lst_b = push2(lst_b, tmp);
 			}
 		}
-		lst_a = tmp;
+//		lst_a = tmp;
 	}
 	return (lst_a);
 }

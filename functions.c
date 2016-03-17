@@ -6,7 +6,7 @@
 /*   By: droly <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/11 17:22:51 by droly             #+#    #+#             */
-/*   Updated: 2016/03/15 17:05:41 by droly            ###   ########.fr       */
+/*   Updated: 2016/03/16 16:11:40 by droly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 t_lst	*push2(t_lst *lst_2, t_lst *tmp)
 {
 	tmp = lst_2;
+	if (lst_2->next == NULL)
+	{
+		lst_2 = NULL;
+		return (lst_2);
+	}
 	while (lst_2->next->next != NULL)
 		lst_2 = lst_2->next;
 	lst_2->next = NULL;
