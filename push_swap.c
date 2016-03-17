@@ -6,22 +6,22 @@
 /*   By: droly <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 14:09:00 by droly             #+#    #+#             */
-/*   Updated: 2016/03/16 16:12:06 by droly            ###   ########.fr       */
+/*   Updated: 2016/03/17 16:54:07 by droly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-void	error(void)
+void		error(void)
 {
 	ft_putendl_fd("Error", 2);
 	exit(0);
 }
 
-void	checkdoublon(t_lst *lst_a, t_lst *tmp)
+void		checkdoublon(t_lst *lst_a, t_lst *tmp)
 {
-	int tmp2;
+	int		tmp2;
 
 	tmp2 = 0;
 	while (lst_a != NULL)
@@ -38,18 +38,14 @@ void	checkdoublon(t_lst *lst_a, t_lst *tmp)
 	}
 }
 
-t_lst	*put_in_lst(t_lst *lst_a, char **argv, int argc)
+t_lst		*put_in_lst(t_lst *lst_a, char **argv, int argc, t_lst *lst_b)
 {
-	int i;
-	t_lst *tmp;
-	t_lst *lst_b;
-	int i2;
+	t_lst	*tmp;
+	int		i;
 
-	lst_b = NULL;
 	argc--;
-	i2 = argc;
-	tmp = lst_a;
 	i = argc;
+	tmp = lst_a;
 	while (argc > 0)
 	{
 		if (argc != 1)
@@ -65,22 +61,17 @@ t_lst	*put_in_lst(t_lst *lst_a, char **argv, int argc)
 	lst_a->next = NULL;
 	lst_a = tmp;
 	checkdoublon(lst_a, tmp);
-	lst_a = algo(lst_a, lst_b);
+	lst_a = algo(lst_a, lst_b, tmp, 2147483647);
 	lst_a = tmp;
 	return (lst_a);
 }
 
-int		main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
-	t_lst *lst_a;
+	t_lst	*lst_a;
 
 	lst_a = (t_lst*)malloc(sizeof(t_lst));
 	lst_a->next = NULL;
-	lst_a = put_in_lst(lst_a, argv, argc);
-	ft_putstr("lst a :\n");
-	while (lst_a != NULL)
-	{
-		printf(" %d\n", lst_a->content);
-		lst_a = lst_a->next;
-	}
+	lst_a = put_in_lst(lst_a, argv, argc, NULL);
+	free(lst_a);
 }

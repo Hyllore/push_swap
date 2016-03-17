@@ -6,7 +6,7 @@
 /*   By: droly <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/11 17:22:51 by droly             #+#    #+#             */
-/*   Updated: 2016/03/16 16:11:40 by droly            ###   ########.fr       */
+/*   Updated: 2016/03/17 17:06:26 by droly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,18 +92,20 @@ t_lst	*push(t_lst *lst_1, t_lst *lst_2, t_lst *tmp, char *str)
 	return (lst_1);
 }
 
-t_lst	*swap_ab(t_lst *lst_ab, t_lst *tmp, char *str)
+t_lst	*swap_ab(t_lst *lst_a, t_lst *lst_b, t_lst *tmp, char *str)
 {
 	int c;
 
 	c = 0;
-	tmp = lst_ab;
-	while (lst_ab->next->next != NULL)
-		lst_ab = lst_ab->next;
-	c = lst_ab->content;
-	lst_ab->content = lst_ab->next->content;
-	lst_ab->next->content = c;
-	lst_ab = tmp;
+	tmp = lst_a;
+	while (lst_a->next->next != NULL)
+		lst_a = lst_a->next;
+	c = lst_a->content;
+	lst_a->content = lst_a->next->content;
+	lst_a->next->content = c;
+	lst_a = tmp;
+	if (ft_check(lst_a, lst_b, tmp))
+		str = "sa\n";
 	ft_putstr(str);
-	return (lst_ab);
+	return (lst_a);
 }

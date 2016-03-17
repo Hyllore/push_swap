@@ -74,6 +74,8 @@ SRC = ft_memset.c		\
       ft_itoa_base.c	\
       ft_putnbr_u.c		\
       ft_power.c		\
+      ft_putwchar.c		\
+      ft_putwstr.c		\
       ft_itoa_base_ull.c\
       ft_utoi.c
 
