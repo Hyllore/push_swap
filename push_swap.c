@@ -6,7 +6,7 @@
 /*   By: droly <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 14:09:00 by droly             #+#    #+#             */
-/*   Updated: 2016/03/17 16:54:07 by droly            ###   ########.fr       */
+/*   Updated: 2016/03/18 18:50:53 by droly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,11 @@ int			main(int argc, char **argv)
 	lst_a = (t_lst*)malloc(sizeof(t_lst));
 	lst_a->next = NULL;
 	lst_a = put_in_lst(lst_a, argv, argc, NULL);
+	while(lst_a)
+	{
+		ft_putnbr(lst_a->content);
+		ft_putchar(':');
+		lst_a = lst_a->next;
+	}
 	free(lst_a);
 }

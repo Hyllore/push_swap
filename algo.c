@@ -6,7 +6,7 @@
 /*   By: droly <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/14 14:48:18 by droly             #+#    #+#             */
-/*   Updated: 2016/03/17 17:06:14 by droly            ###   ########.fr       */
+/*   Updated: 2016/03/18 18:48:54 by droly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ t_lst	*algo(t_lst *lst_a, t_lst *lst_b, t_lst *tmp, int c)
 			return (lst_a);
 		c = add(lst_a, tmp, c);
 		lst_a = add2(lst_a, tmp, c);
-		if (lst_a->content == c)
+		if (lst_a->content == c && ft_check(tmp, lst_b, tmp) == 0)
 		{
 			lst_a = tmp;
 			lst_b = push(lst_b, lst_a, tmp, "pb ");

@@ -6,7 +6,7 @@
 /*   By: droly <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/11 17:22:51 by droly             #+#    #+#             */
-/*   Updated: 2016/03/17 17:06:26 by droly            ###   ########.fr       */
+/*   Updated: 2016/03/18 17:13:46 by droly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ t_lst	*rotate_r(t_lst *lst_ab, t_lst *tmp, char *str)
 	}
 	lst_ab->content = tmp2;
 	lst_ab = tmp;
+	if (ft_check(lst_ab, NULL, tmp) == 1)
+			str = "rra\n";
 	ft_putstr(str);
 	return (lst_ab);
 }
