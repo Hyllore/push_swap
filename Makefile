@@ -6,7 +6,7 @@
 #    By: droly <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/03/17 16:34:45 by droly             #+#    #+#              #
-#    Updated: 2016/03/17 16:44:57 by droly            ###   ########.fr        #
+#    Updated: 2016/03/23 18:37:14 by droly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME = push_swap
 
 SRC = algo.c \
 	  functions.c \
-	  push_swap.c
+	  push_swap.c \
+	  bonus.c
 
 OBJ = $(SRC:.c=.o)
 

@@ -6,12 +6,11 @@
 /*   By: droly <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 14:09:00 by droly             #+#    #+#             */
-/*   Updated: 2016/03/18 18:50:53 by droly            ###   ########.fr       */
+/*   Updated: 2016/03/23 18:39:31 by droly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 void		error(void)
 {
@@ -23,6 +22,7 @@ void		checkdoublon(t_lst *lst_a, t_lst *tmp)
 {
 	int		tmp2;
 
+	lst_a = tmp;
 	tmp2 = 0;
 	while (lst_a != NULL)
 	{
@@ -38,31 +38,44 @@ void		checkdoublon(t_lst *lst_a, t_lst *tmp)
 	}
 }
 
+t_lst		*options(char **argv, t_lst *tmp)
+{
+	tmp->c = 0;
+	tmp->v = 0;
+	if (ft_strcmp(argv[1], "-c") == 0 || ft_strcmp(argv[1], "-v") == 0)
+	{
+		if (ft_strcmp(argv[1], "-c") == 0 || ft_strcmp(argv[2], "-c") == 0)
+			tmp->c = 1;
+		if (ft_strcmp(argv[1], "-v") == 0 || ft_strcmp(argv[2], "-v") == 0)
+			tmp->v = 1;
+	}
+	return (tmp);
+}
+
 t_lst		*put_in_lst(t_lst *lst_a, char **argv, int argc, t_lst *lst_b)
 {
 	t_lst	*tmp;
 	int		i;
 
-	argc--;
-	i = argc;
+	i = 0;
 	tmp = lst_a;
-	while (argc > 0)
+	tmp = options(argv, tmp);
+	i = tmp->v + tmp->c;
+	while (argc > i)
 	{
-		if (argc != 1)
+		if (argc != i + 1)
 			lst_a->next = (t_lst*)malloc(sizeof(t_lst));
-		lst_a->content = ft_atoi(argv[i]);
-		if (ft_strcmp(ft_itoa(lst_a->content), argv[i]) != 0)
+		lst_a->content = ft_atoi(argv[argc]);
+		if (ft_strcmp(ft_itoa(lst_a->content), argv[argc]) != 0)
 			error();
-		i--;
 		argc--;
-		if (argc != 0)
+		if (argc != i)
 			lst_a = lst_a->next;
 	}
 	lst_a->next = NULL;
-	lst_a = tmp;
 	checkdoublon(lst_a, tmp);
 	lst_a = algo(lst_a, lst_b, tmp, 2147483647);
-	lst_a = tmp;
+	free(lst_b);
 	return (lst_a);
 }
 
@@ -72,12 +85,19 @@ int			main(int argc, char **argv)
 
 	lst_a = (t_lst*)malloc(sizeof(t_lst));
 	lst_a->next = NULL;
-	lst_a = put_in_lst(lst_a, argv, argc, NULL);
-	while(lst_a)
+	if (argc == 1)
+		return (0);
+	lst_a = put_in_lst(lst_a, argv, argc - 1, NULL);
+	if (lst_a->c == 1)
 	{
-		ft_putnbr(lst_a->content);
-		ft_putchar(':');
-		lst_a = lst_a->next;
+		ft_putstr("\n                 \033[1;33mRESULTAT :\033[0m\n");
+		while (lst_a)
+		{
+			ft_putstr("                     \033[0;32m");
+			ft_putnbr(lst_a->content);
+			ft_putstr("\033[0m\n");
+			lst_a = lst_a->next;
+		}
 	}
 	free(lst_a);
 }

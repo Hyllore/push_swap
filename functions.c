@@ -6,28 +6,32 @@
 /*   By: droly <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/11 17:22:51 by droly             #+#    #+#             */
-/*   Updated: 2016/03/18 17:13:46 by droly            ###   ########.fr       */
+/*   Updated: 2016/03/23 18:36:16 by droly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_lst	*push2(t_lst *lst_2, t_lst *tmp)
+t_lst	*push2(t_lst *lst_2, t_lst *lst_add, t_lst *tmp)
 {
 	tmp = lst_2;
 	if (lst_2->next == NULL)
 	{
 		lst_2 = NULL;
+		if (tmp->v == 1)
+			ft_option(lst_2, lst_add, tmp);
 		return (lst_2);
 	}
 	while (lst_2->next->next != NULL)
 		lst_2 = lst_2->next;
 	lst_2->next = NULL;
 	lst_2 = tmp;
+	if (tmp->v == 1)
+		ft_option(lst_2, lst_add, tmp);
 	return (lst_2);
 }
 
-t_lst	*rotate_r(t_lst *lst_ab, t_lst *tmp, char *str)
+t_lst	*rotate_r(t_lst *lst_ab, t_lst *lst_add, t_lst *tmp, char *str)
 {
 	int tmp2;
 
@@ -40,9 +44,11 @@ t_lst	*rotate_r(t_lst *lst_ab, t_lst *tmp, char *str)
 	}
 	lst_ab->content = tmp2;
 	lst_ab = tmp;
-	if (ft_check(lst_ab, NULL, tmp) == 1)
-			str = "rra\n";
+	if (ft_check(lst_ab, lst_add, tmp) == 1)
+		str = "rra\n";
 	ft_putstr(str);
+	if (tmp->v == 1)
+		ft_option(lst_ab, lst_add, tmp);
 	return (lst_ab);
 }
 
@@ -109,5 +115,7 @@ t_lst	*swap_ab(t_lst *lst_a, t_lst *lst_b, t_lst *tmp, char *str)
 	if (ft_check(lst_a, lst_b, tmp))
 		str = "sa\n";
 	ft_putstr(str);
+	if (tmp->v == 1)
+		ft_option(lst_a, lst_b, tmp);
 	return (lst_a);
 }
