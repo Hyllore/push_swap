@@ -6,7 +6,7 @@
 /*   By: droly <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 14:09:00 by droly             #+#    #+#             */
-/*   Updated: 2016/03/23 18:39:31 by droly            ###   ########.fr       */
+/*   Updated: 2016/03/24 12:02:17 by droly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ t_lst		*options(char **argv, t_lst *tmp)
 {
 	tmp->c = 0;
 	tmp->v = 0;
-	if (ft_strcmp(argv[1], "-c") == 0 || ft_strcmp(argv[1], "-v") == 0)
+	if ((ft_strcmp(argv[1], "-c") == 0 || ft_strcmp(argv[1], "-v") == 0)
+			&& argv[2] != NULL)
 	{
 		if (ft_strcmp(argv[1], "-c") == 0 || ft_strcmp(argv[2], "-c") == 0)
 			tmp->c = 1;
