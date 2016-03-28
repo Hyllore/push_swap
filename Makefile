@@ -26,8 +26,8 @@ FLAGS = -Wall -Werror -Wextra
 all: $(NAME)
 
 $(NAME): $(OBJ) makelibft
-	@clang $(FLAGS) -c $(SRC) -I$(HEAD)
-	@clang $(OBJ) libft/libft.a -o $(NAME)
+	@gcc $(FLAGS) -c $(SRC)
+	@gcc $(OBJ) libft/libft.a -o $(NAME)
 
 makelibft:
 	@make -C libft/
